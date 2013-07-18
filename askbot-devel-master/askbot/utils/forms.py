@@ -1,3 +1,4 @@
+#coding:utf8
 import re
 from django import forms
 from django.contrib.auth.models import User
@@ -90,7 +91,7 @@ class UserNameField(StrippedNonEmptyCharField):
         db_field='username',
         must_exist=False,
         skip_clean=False,
-        label=_('Choose a screen name'),
+        label=_(u'用户名'),
         widget_attrs=None,
         **kw
     ):

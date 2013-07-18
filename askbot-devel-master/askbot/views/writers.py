@@ -220,6 +220,8 @@ def ask(request):#view used to ask a new question
     must login/register in order for the question go be shown
     """
     form = forms.AskForm(request.REQUEST, user=request.user)
+    print "ask" 
+    print form
     if request.method == 'POST':
         if form.is_valid():
             timestamp = datetime.datetime.now()
@@ -231,6 +233,17 @@ def ask(request):#view used to ask a new question
             post_privately = form.cleaned_data['post_privately']
             group_id = form.cleaned_data.get('group_id', None)
             language = form.cleaned_data.get('language', None)
+
+            print "input info"
+            print timestamp
+            print title
+            print wiki
+            print tagnames
+            print text
+            print ask_anonymously
+            print post_privately
+            print group_id
+            print language
 
             if request.user.is_authenticated():
                 drafts = models.DraftQuestion.objects.filter(
